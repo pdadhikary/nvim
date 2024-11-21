@@ -27,10 +27,9 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "80"
-
-vim.opt.signcolumn = "yes"
-vim.opt.winbar = " "
+vim.opt.colorcolumn = "80," .. (vim.o.textwidth > 0 and vim.o.textwidth or 80)
+vim.cmd("highlight OverLength ctermbg=red ctermfg=white guibg=#592929")
+vim.cmd("match OverLength /\\%>" .. (vim.o.textwidth > 0 and vim.o.textwidth or 80) .. "v.\\+/")
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

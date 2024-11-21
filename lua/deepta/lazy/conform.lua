@@ -21,7 +21,7 @@ return {
 				sql = { "sql-formatter" },
 			},
 			format_on_save = {
-                async = false,
+				async = false,
 				timeout_ms = 1000,
 				lsp_fallback = true,
 			},
@@ -41,9 +41,9 @@ return {
 					"80",
 				},
 				stylua = {
-					"--column-width",
+					"--column_width",
 					"80",
-					"--indent-width",
+					"--indent_width",
 					"4",
 				},
 				sql_formatter = {

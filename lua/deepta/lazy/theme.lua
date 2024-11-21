@@ -2,16 +2,16 @@ return {
 	"folke/tokyonight.nvim",
 	lazy = false,
 	priority = 1000,
-	opts = {
-		styles = {
-			sidebars = "dark",
-			floats = "normal",
-		},
-		dim_inactive = false,
-		transparent = true,
-		terminal_colors = true,
-	},
 	config = function()
+		require("tokyonight").setup({
+			transparent = true,
+			terminal_colors = true,
+			styles = {
+				sidebars = "transparent",
+				floats = "transparent",
+			},
+		})
+
 		vim.cmd([[colorscheme tokyonight]])
 	end,
 }

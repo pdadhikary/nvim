@@ -13,7 +13,7 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = "C:/Users/deept/AppData/Local/.vim/undodir"
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -34,3 +34,13 @@ vim.opt.winbar = " "
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+vim.g.undotree_DiffCommand = "FC"
+
+vim.cmd("let &shell = executable('pwsh') ? 'pwsh' : 'powershell'")
+vim.cmd(
+	"let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';Remove-Alias -Force -ErrorAction SilentlyContinue tee;'"
+)
+vim.cmd("let &shellredir = '2>&1 | %%{ \"$_\" } | Out-File %s; exit $LastExitCode'")
+vim.cmd("let &shellpipe  = '2>&1 | %%{ \"$_\" } | tee %s; exit $LastExitCode'")
+vim.cmd("set shellquote= shellxquote=")

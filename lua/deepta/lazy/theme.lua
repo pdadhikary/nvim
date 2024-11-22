@@ -4,11 +4,12 @@ return {
 	priority = 1000,
 	config = function()
 		require("tokyonight").setup({
-			transparent = true,
+			style = "storm",
+			transparent = false,
 			terminal_colors = true,
 			styles = {
-				sidebars = "transparent",
-				floats = "transparent",
+				sidebars = "dark",
+				floats = "dark",
 			},
 		})
 

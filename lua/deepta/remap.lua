@@ -3,8 +3,7 @@ vim.g.mapleader = " "
 -- Clipboard
 vim.keymap.set("n", "<C-a>", "gg0vG$", { desc = "Select all" })
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copy selection to clipboard" })
-vim.keymap.set("n", "<leader>y", 'V"+y$', { desc = "Copy line to clipboard" })
-vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
+vim.keymap.set("n", "<leader>y", 'mzV"+y`z', { desc = "Copy line to clipboard" })
 
 -- Explorer
 vim.keymap.set("n", "<leader>fv", function()
@@ -32,9 +31,6 @@ vim.keymap.set("n", "<C-s>", function()
 	vim.cmd("write")
 end, { noremap = true, silent = true, desc = "Save files; change line endings" })
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines" })
-vim.keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
-end, { desc = "Source current file" })
 vim.keymap.set("n", "Q", "<nop>", { desc = "Disable replay macro" })
 
 -- Terminal

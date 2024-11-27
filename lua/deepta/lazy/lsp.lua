@@ -12,6 +12,7 @@ return {
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"j-hui/fidget.nvim",
+		"rafamadriz/friendly-snippets",
 	},
 
 	config = function()
@@ -87,6 +88,8 @@ return {
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
+		require("luasnip.loaders.from_vscode").lazy_load()
+
 		cmp.setup({
 			snippet = {
 				expand = function(args)
@@ -102,6 +105,7 @@ return {
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- For luasnip users.
+				{ name = "path" },
 			}, {
 				{ name = "buffer" },
 			}),

@@ -29,7 +29,11 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80," .. (vim.o.textwidth > 0 and vim.o.textwidth or 80)
 vim.cmd("highlight OverLength ctermbg=red ctermfg=white guibg=#592929")
-vim.cmd("match OverLength /\\%>" .. (vim.o.textwidth > 0 and vim.o.textwidth or 80) .. "v.\\+/")
+vim.cmd(
+	"match OverLength /\\%>"
+		.. (vim.o.textwidth > 0 and vim.o.textwidth or 80)
+		.. "v.\\+/"
+)
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -40,6 +44,8 @@ vim.cmd("let &shell = executable('pwsh') ? 'pwsh' : 'powershell'")
 vim.cmd(
 	"let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';Remove-Alias -Force -ErrorAction SilentlyContinue tee;'"
 )
-vim.cmd("let &shellredir = '2>&1 | %%{ \"$_\" } | Out-File %s; exit $LastExitCode'")
+vim.cmd(
+	"let &shellredir = '2>&1 | %%{ \"$_\" } | Out-File %s; exit $LastExitCode'"
+)
 vim.cmd("let &shellpipe  = '2>&1 | %%{ \"$_\" } | tee %s; exit $LastExitCode'")
 vim.cmd("set shellquote= shellxquote=")

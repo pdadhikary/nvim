@@ -32,7 +32,8 @@ return {
 				"lua_ls",
 				"tailwindcss",
 				"ts_ls",
-				"jedi_language_server",
+				"pyright",
+				"csharp_ls",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -44,7 +45,11 @@ return {
 				zls = function()
 					local lspconfig = require("lspconfig")
 					lspconfig.zls.setup({
-						root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
+						root_dir = lspconfig.util.root_pattern(
+							".git",
+							"build.zig",
+							"zls.json"
+						),
 						settings = {
 							zls = {
 								enable_inlay_hints = true,
@@ -62,10 +67,24 @@ return {
 						capabilities = capabilities,
 						settings = {
 							Lua = {
-								runtime = { version = "Lua 5.1" },
+								runtime = { version = "LuaJIT" },
 								diagnostics = {
-									globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
+									globals = {
+										"bit",
+										"vim",
+										"it",
+										"describe",
+										"before_each",
+										"after_each",
+									},
 								},
+								workspace = {
+									checkThirdParty = false,
+									library = {
+										vim.env.VIMRUNTIME,
+									},
+								},
+								telemetry = { enable = false },
 							},
 						},
 					})
@@ -112,6 +131,9 @@ return {
 		})
 
 		vim.diagnostic.config({
+			virtual_text = true,
+			signs = true,
+			update_in_insert = true,
 			-- update_in_insert = true,
 			float = {
 				focusable = false,

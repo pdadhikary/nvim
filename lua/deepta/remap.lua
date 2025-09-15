@@ -19,7 +19,6 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>fv", function()
 	vim.cmd([[Neotree toggle]])
 end, { desc = "Neotree file explorer" })
-vim.keymap.set("n", "<C-t>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Navigation
 vim.keymap.set({ "n", "v" }, "<C-j>", "20j", { desc = "Jump down" })
@@ -47,25 +46,9 @@ vim.keymap.set(
 )
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines" })
 vim.keymap.set("n", "Q", "<nop>", { desc = "Disable replay macro" })
+vim.keymap.set("i", "<C-t>", "<nop>")
+vim.keymap.set("i", "<C-u>", "<nop>")
 
 -- Code Folding
 -- vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 -- vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-
--- Terminal
-vim.keymap.set("n", "<leader>t", function()
-	local count = vim.v.count1 -- Use vim.v.count1 instead of vim.v.count
-	require("toggleterm").toggle(count)
-end)
-function _G.set_terminal_keymaps()
-	local opts = { buffer = 0 }
-	vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
-	vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
-	vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
-	vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
-	vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
-	vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
-end
-
--- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd("autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()")

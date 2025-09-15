@@ -1,4 +1,9 @@
-vim.opt.guicursor = "i-ci-ve:ver25"
+vim.opt.guicursor = {
+	"n-v-c:block-blinkwait700-blinkon400-blinkoff250", -- Normal/Visual/Command: blinking block
+	"i-ci-ve:ver25", -- Insert/Command-line Insert/Visual-ex: steady vertical bar
+	"r-cr:hor20", -- Replace modes: steady horizontal bar
+	"o:hor50", -- Operator-pending: steady horizontal bar
+}
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -39,13 +44,3 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.g.undotree_DiffCommand = "FC"
-
-vim.cmd("let &shell = executable('pwsh') ? 'pwsh' : 'powershell'")
-vim.cmd(
-	"let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';Remove-Alias -Force -ErrorAction SilentlyContinue tee;'"
-)
-vim.cmd(
-	"let &shellredir = '2>&1 | %%{ \"$_\" } | Out-File %s; exit $LastExitCode'"
-)
-vim.cmd("let &shellpipe  = '2>&1 | %%{ \"$_\" } | tee %s; exit $LastExitCode'")
-vim.cmd("set shellquote= shellxquote=")

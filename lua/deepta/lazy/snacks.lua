@@ -77,7 +77,7 @@ return {
 				Snacks.words.jump(vim.v.count1)
 			end,
 			desc = "Next Reference",
-			mode = { "n", "t" },
+			mode = { "n" },
 		},
 		{
 			"[[",
@@ -85,7 +85,7 @@ return {
 				Snacks.words.jump(-vim.v.count1)
 			end,
 			desc = "Prev Reference",
-			mode = { "n", "t" },
+			mode = { "n" },
 		},
 	},
 }
